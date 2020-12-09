@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import * as Tone from 'tone';
 
 function App() {
+  let synth = new Tone.PolySynth().toDestination();
+  let notes = ['C','D','E','F','G','A','B'];
+
+  function noteDown(note) {
+     synth.triggerAttackRelease(note, '16n')
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="container">
+        {notes.map((note, id) =>{
+          return(
+            <div key={id} className='whiteNote' data-note={`${note + '4'}`} onMouseDown={ e => noteDown(e.target.getAttribute("data-note"))}>hello</div>
+          )
+        })}
+      </div>
     </div>
   );
 }
