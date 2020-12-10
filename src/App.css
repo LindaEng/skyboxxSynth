@@ -1,9 +1,18 @@
 body {
   background-color: red;
 }
+
+.App {
+  height: 100vh;
+  display: flex;
+}
+
 #container {
+  margin: auto;
   position: relative;
   height: 200px;
+  display: block;
+  float: left;
   border: 5px solid black;
 }
 
