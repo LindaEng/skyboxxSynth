@@ -12,10 +12,13 @@ function App() {
   let octaves = [0,1];
 
 
-  function noteDown(elem ,note, isSharp) {
-    console.log(elem.target.className)
+  function noteDown(elem ,note) {
+    elem.target.className = elem.target.className + ' active'
     synth.triggerAttackRelease(note, '16n')
-    return true
+  }
+
+  function noteUp(elem) {
+    elem.target.className = elem.target.className.slice(0,elem.target.className.indexOf(' '))
   }
 
   return (
@@ -29,9 +32,9 @@ function App() {
             }
             return(
               <div id ="innerContainer">
-              <div key={id} className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"),false)}></div>
+              <div key={id} className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
               { (hasSharp) ?
-                <div className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"),true)}></div> : null
+                <div className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div> : null
               }
               </div>
             )
