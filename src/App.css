@@ -25,11 +25,14 @@ body {
 
 .whiteNote {
   height: 100%;
-  width: 50px;
+  width: 49.5px;
   background: white;
   float:left;
   border-right: 1px solid black;
   position: relative;
+}
+.whiteNote.active {
+  background: teal;
 }
 
 .blackNote {
@@ -39,5 +42,9 @@ body {
   z-index: 1;
   background-color: #777;
   left: 68%;
+}
+
+.blackNote.active {
+  background: pink;
 }
 
