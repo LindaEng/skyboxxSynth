@@ -1,6 +1,8 @@
 import './App.css';
 import * as Tone from 'tone';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+
+import {o1Notes, o2Notes, o1SharpNotes, o2SharpNotes} from './Notes'
 
 function App() {
   // [activeNotes, noteState] = useState({
@@ -11,6 +13,7 @@ function App() {
   let notes = ['C','D','E','F','G','A','B'];
   let octaves = [0,1];
 
+  console.log('JSKDFJLDSJ', o1Notes)
 
   function noteDown(elem ,note) {
     elem.target.className = elem.target.className + ' active'
@@ -20,6 +23,19 @@ function App() {
   function noteUp(elem) {
     elem.target.className = elem.target.className.slice(0,elem.target.className.indexOf(' '))
   }
+
+  function keyDown(elem, note) {
+    console.log(elem.key)
+  }
+
+ useEffect(() => {
+  let test = document.getElementsByClassName("whiteNote")
+
+   window.addEventListener("keydown", (e) => {
+     console.log('THISISE', e)
+   })
+
+ })
 
   return (
     <div className="App">
@@ -34,7 +50,7 @@ function App() {
               <div id ="innerContainer">
               <div key={id} className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
               { (hasSharp) ?
-                <div className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div> : null
+                <div key={note} className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div> : null
               }
               </div>
             )
