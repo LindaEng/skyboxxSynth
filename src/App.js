@@ -2,7 +2,7 @@ import './App.css';
 import * as Tone from 'tone';
 import React, {useState, useEffect} from 'react';
 
-import {o1Notes, o2Notes, o1SharpNotes, o2SharpNotes} from './Notes'
+import {keyToNotes} from './Notes'
 
 function App() {
   // [activeNotes, noteState] = useState({
@@ -13,7 +13,6 @@ function App() {
   let notes = ['C','D','E','F','G','A','B'];
   let octaves = [0,1];
 
-  console.log('JSKDFJLDSJ', o1Notes)
 
   function noteDown(elem ,note) {
     elem.target.className = elem.target.className + ' active'
@@ -24,15 +23,17 @@ function App() {
     elem.target.className = elem.target.className.slice(0,elem.target.className.indexOf(' '))
   }
 
-  function keyDown(elem, note) {
-    console.log(elem.key)
+  function keyDown(elem) {
+    let key = elem.key.toUpperCase()
+    synth.triggerAttackRelease(keyToNotes[key], '16n')
+
   }
 
  useEffect(() => {
   let test = document.getElementsByClassName("whiteNote")
 
    window.addEventListener("keydown", (e) => {
-     console.log('THISISE', e)
+     keyDown(e)
    })
 
  })
