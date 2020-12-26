@@ -25,6 +25,11 @@ const keyToNotes = {
   P: 'A#5'
 }
 
+const whiteNoteKeys = Object.keys(keyToNotes).slice(0,14)
+const sharpNoteKeys = Object.keys(keyToNotes).slice(14,Object.keys(keyToNotes).length)
+
 module.exports = {
-  keyToNotes
+  keyToNotes,
+  whiteNoteKeys,
+  sharpNoteKeys
 }
