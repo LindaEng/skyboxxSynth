@@ -39,12 +39,32 @@ function App() {
     synth.triggerAttackRelease(keyToNotes[key], '16n')
   }
 
+  function keyUp(elem, whiteNotes, sharpNotes) {
+    let key = elem.key.toUpperCase()
+    if(whiteNoteKeys.indexOf(key) !== -1) {
+
+      let indexOfWhiteKey = whiteNoteKeys.indexOf(key)
+      whiteNotes[indexOfWhiteKey].className = whiteNotes[indexOfWhiteKey].className.slice(0,elem.target.className.indexOf(' '))
+    }
+    else if (sharpNoteKeys.indexOf(key) !== -1) {
+      let indexOfSharpKey = sharpNoteKeys.indexOf(key)
+      sharpNotes[indexOfSharpKey].className = sharpNotes[indexOfSharpKey].className.slice(0,elem.target.className.indexOf(' '))
+    }
+    else {
+      return
+    }
+  }
+
   useEffect(() => {
   let whiteNotes = document.getElementsByClassName("whiteNote")
   let sharpNotes = document.getElementsByClassName("blackNote")
     window.addEventListener("keydown", (e) => {
       keyDown(e, whiteNotes, sharpNotes)
 
+    })
+    window.addEventListener("keyup", (e) => {
+      console.log('KEY IS UP')
+      keyUp(e, whiteNotes, sharpNotes)
     })
 
   })
