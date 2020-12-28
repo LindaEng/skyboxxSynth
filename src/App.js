@@ -1,16 +1,30 @@
 import React from 'react';
-import * as Tone from 'tone';
-import Keyboard from './Components/Keyboard/Keyboard'
-import './App.css';
+import { connect } from 'react-redux';
+
+import Keyboard from './Components/Keyboard/Keyboard';
+import SoundDropDown from './Components/Sound/SoundDropDown';
+
+import './sound.css';
 
 
-function App() {
+function App(props) {
+  //hooks to hold sound
+  console.log(props)
   return (
     <div className="App">
-    <Keyboard/>
+      <div className="instrument">
+        <SoundDropDown/>
+        <Keyboard/>
+      </div>
     </div>
   )
 }
 
-export default App;
+const mapStateToProps = (props) => {
+  return {
+    currentSound: props.currentSound
+  }
+}
+
+export default connect(mapStateToProps)(App);
 

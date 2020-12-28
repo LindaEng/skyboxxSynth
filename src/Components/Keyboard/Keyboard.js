@@ -58,14 +58,12 @@ function Keyboard() {
 
     })
     window.addEventListener("keyup", (e) => {
-      console.log('KEY IS UP')
       keyUp(e, whiteNotes, sharpNotes)
     })
 
   })
 
   return (
-
       <div id="container">
       { octaves.map(octave =>{
         return notes.map((note, id) =>{
@@ -74,7 +72,7 @@ function Keyboard() {
               hasSharp = false;
             }
             return(
-              <div id ="innerContainer">
+              <div key={note + id} id ="innerContainer">
               <div key={id} className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
               { (hasSharp) ?
                 <div key={note} className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div> : null
