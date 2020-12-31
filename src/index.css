@@ -13,29 +13,27 @@ body {
 
 .container {
   margin: auto;
-  position: relative;
   height: 200px;
-  display: block;
-  float: left;
-  border: 5px solid black;
+  display: flex;
+  border: 1px solid black;
   min-width: 700px;
 }
 
-.innerContainer {
+.noteContainer {
   position: relative;
-  height:100%;
-  width: 50px;
-  float: left;
+  height: 100%;
+}
+
+.noteContainer:not(:last-of-type) {
+  border-right: 1px solid black;
 }
 
 .whiteNote {
   height: 100%;
-  width: 49.5px;
+  width: 50px;
   background: white;
-  float:left;
-  border-right: 1px solid black;
-  position: relative;
 }
+
 .whiteNote.active {
   background: teal;
 }
@@ -46,11 +44,10 @@ body {
   width: 55%;
   z-index: 1;
   background-color: #777;
+  top: 0;
   left: 68%;
 }
 
 .blackNote.active {
   background: pink;
 }
-
-

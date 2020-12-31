@@ -1,6 +1,6 @@
 .dropdown {
-  position:relative;
   height: 200px;
   display: block;
-  border: 5px solid black;
+  border: 1px solid black;
+  border-bottom: none;
 }

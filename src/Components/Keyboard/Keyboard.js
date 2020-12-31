@@ -72,7 +72,7 @@ function Keyboard(props) {
               hasSharp = false;
             }
             return(
-              <div key={note + id} className="innerContainer">
+              <div key={note + id} className="noteContainer">
               <div key={id}
                   className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
               { (hasSharp) ?
