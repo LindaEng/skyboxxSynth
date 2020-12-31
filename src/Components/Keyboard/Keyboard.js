@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 
-import {keyToNotes, whiteNoteKeys, sharpNoteKeys} from './Notes'
+import {keyToNotes, whiteNoteKeys, sharpNoteKeys} from './Notes';
+import './Keyboard.css';
 
 function Keyboard(props) {
   let notes = ['C','D','E','F','G','A','B'];
@@ -64,7 +65,8 @@ function Keyboard(props) {
   })
 
   return (
-      <div className="container">
+    <div className="keyboardContainer">
+      <div className="keyboard">
       { octaves.map(octave =>{
         return notes.map((note, id) =>{
             let hasSharp = true;
@@ -74,9 +76,13 @@ function Keyboard(props) {
             return(
               <div key={note + id} className="noteContainer">
               <div key={id}
-                  className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
+                  className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}>
+                   <div className='whiteNoteColor'></div>
+                  </div>
               { (hasSharp) ?
-                <div key={note} className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div> : null
+                <div key={note} className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}>
+                  <div className='blackNoteColor'></div>
+                </div> : null
               }
               </div>
             )
@@ -85,7 +91,7 @@ function Keyboard(props) {
         })
       }
       </div>
-
+    </div>
   );
 }
 

@@ -1,0 +1,20 @@
+.horizontal-stripes {
+  background: repeating-linear-gradient( 180deg, transparent, transparent 5px, #C43072 5px, #C43072 10px);
+  width: 25%;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+.keyboardContainer {
+  height: 45%;
+  border-bottom: 3px solid #6d9d96;
+}
+
+.keyboard {
+  height: 100%;
+  display: flex;
+  border: 2px solid #C43072;
+  box-sizing: border-box;
+}
+
+

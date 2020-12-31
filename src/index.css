@@ -7,30 +7,40 @@ body {
   display: flex;
 }
 
-.instrument {
+.synthBackground {
   margin: auto;
+  height: 30%;
+  width: 75%;
+  min-width: 500px;
+  max-width: 700px;
+  border: 2px solid #C43072;
+  background-color: #92dcd1;
+  border-radius: 30px;
+  display: flex;
+  padding: 20px 25px 10px;
 }
 
-.container {
-  margin: auto;
-  height: 200px;
+.keyboardPanelContainer {
+  width: 75%;
   display: flex;
-  border: 1px solid black;
-  min-width: 700px;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .noteContainer {
   position: relative;
   height: 100%;
+  width: calc(100% / 14);
+  box-sizing: border-box;
 }
 
 .noteContainer:not(:last-of-type) {
-  border-right: 1px solid black;
+  border-right: 3px solid #C43072;
 }
 
 .whiteNote {
   height: 100%;
-  width: 50px;
+  /* width: 50px; */
   background: white;
 }
 
@@ -38,16 +48,33 @@ body {
   background: teal;
 }
 
+.whiteNoteColor {
+  height: 98%;
+  width: 90%;
+  background-color: #F7F2B8;
+}
+
 .blackNote {
   position: absolute;
   height: 65%;
   width: 55%;
   z-index: 1;
-  background-color: #777;
+  background-color: rgb(251, 251, 251);
   top: 0;
   left: 68%;
+  border: 3px solid #C43072;
 }
 
 .blackNote.active {
   background: pink;
 }
+
+.blackNoteColor {
+  height: 98%;
+  width: 90%;
+  top: 0;
+  left: 0%;
+  background-color: #000000;
+}
+
+

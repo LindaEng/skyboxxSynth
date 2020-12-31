@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeSound } from '../../reducers/rootReducer'
+import { changeSound } from '../../reducers/rootReducer';
+import './DropdownPanel.css';
 
 function SoundDropDown (props) {
   const handleChange = (event) => {
@@ -9,14 +10,17 @@ function SoundDropDown (props) {
     event.target.blur()
   }
   return (
-    <div className="dropdown">
-      <select
-        onChange={handleChange}>
-        <option value="PolySynth">PolySynth</option>
-        <option value="AMSynth">AMSynth</option>
-        <option value="FMSynth">FMSynth</option>
-        <option value="MembraneSynth">MembraneSynth</option>
-      </select>
+   <div className="dropdownPanel">
+      <div className="dropdown">
+        <select
+          onChange={handleChange}
+          className="sounds">
+          <option value="PolySynth">Poly</option>
+          <option value="AMSynth">AMSynth</option>
+          <option value="FMSynth">FMSynth</option>
+          <option value="MembraneSynth">Membrane</option>
+        </select>
+      </div>
     </div>
   )
 }

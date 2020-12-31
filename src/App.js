@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Keyboard from './Components/Keyboard/Keyboard';
 import SoundDropDown from './Components/Sound/SoundDropDown';
+import KeyboardLines from './Components/Keyboard/KeyboardLines';
 
 import './sound.css';
 
@@ -11,9 +12,12 @@ function App(props) {
   //hooks to hold sound
   return (
     <div className="App">
-      <div className="instrument">
-        <SoundDropDown/>
-        <Keyboard/>
+      <div className="synthBackground">
+        <KeyboardLines/>
+        <div className="keyboardPanelContainer">
+          <SoundDropDown/>
+          <Keyboard/>
+        </div>
       </div>
     </div>
   )
