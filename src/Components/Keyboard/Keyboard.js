@@ -1,12 +1,12 @@
-import * as Tone from 'tone';
 import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 
 import {keyToNotes, whiteNoteKeys, sharpNoteKeys} from './Notes'
 
-function Keyboard() {
-  let synth = new Tone.PolySynth().toDestination();
+function Keyboard(props) {
   let notes = ['C','D','E','F','G','A','B'];
   let octaves = [0,1];
+  let synth = props.currentSound
 
   function noteDown(elem ,note) {
     elem.target.className = elem.target.className + ' active'
@@ -17,16 +17,15 @@ function Keyboard() {
     elem.target.className = elem.target.className.slice(0,elem.target.className.indexOf(' '))
   }
 
-  function keyDown(elem, whiteNotes, sharpNotes) {
-    let key = elem.key.toUpperCase()
+  function keyDown(event, whiteNotes, sharpNotes) {
+    let key = event.key.toUpperCase()
     if(whiteNoteKeys.indexOf(key) !== -1) {
-
       let indexOfWhiteKey = whiteNoteKeys.indexOf(key)
-      whiteNotes[indexOfWhiteKey].className = whiteNotes[indexOfWhiteKey].className + ' active'
+      whiteNotes[indexOfWhiteKey].classList.add('active')
     }
     else if (sharpNoteKeys.indexOf(key) !== -1) {
       let indexOfSharpKey = sharpNoteKeys.indexOf(key)
-      sharpNotes[indexOfSharpKey].className = sharpNotes[indexOfSharpKey].className + ' active'
+      sharpNotes[indexOfSharpKey].classList.add('active')
     }
     else {
       return
@@ -37,13 +36,12 @@ function Keyboard() {
   function keyUp(elem, whiteNotes, sharpNotes) {
     let key = elem.key.toUpperCase()
     if(whiteNoteKeys.indexOf(key) !== -1) {
-
       let indexOfWhiteKey = whiteNoteKeys.indexOf(key)
-      whiteNotes[indexOfWhiteKey].className = whiteNotes[indexOfWhiteKey].className.slice(0,elem.target.className.indexOf(' '))
+      whiteNotes[indexOfWhiteKey].classList.remove('active')
     }
     else if (sharpNoteKeys.indexOf(key) !== -1) {
       let indexOfSharpKey = sharpNoteKeys.indexOf(key)
-      sharpNotes[indexOfSharpKey].className = sharpNotes[indexOfSharpKey].className.slice(0,elem.target.className.indexOf(' '))
+      sharpNotes[indexOfSharpKey].classList.remove('active')
     }
     else {
       return
@@ -51,20 +49,22 @@ function Keyboard() {
   }
 
   useEffect(() => {
-  let whiteNotes = document.getElementsByClassName("whiteNote")
-  let sharpNotes = document.getElementsByClassName("blackNote")
+    let whiteNotes = document.getElementsByClassName("whiteNote")
+    let sharpNotes = document.getElementsByClassName("blackNote")
     window.addEventListener("keydown", (e) => {
       keyDown(e, whiteNotes, sharpNotes)
-
     })
     window.addEventListener("keyup", (e) => {
       keyUp(e, whiteNotes, sharpNotes)
     })
-
+    return function cleanup() {
+      window.removeEventListener("keydown", keyDown)
+      window.removeEventListener("keyup", keyUp)
+    }
   })
 
   return (
-      <div id="container">
+      <div className="container">
       { octaves.map(octave =>{
         return notes.map((note, id) =>{
             let hasSharp = true;
@@ -72,8 +72,9 @@ function Keyboard() {
               hasSharp = false;
             }
             return(
-              <div key={note + id} id ="innerContainer">
-              <div key={id} className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
+              <div key={note + id} className="innerContainer">
+              <div key={id}
+                  className='whiteNote' data-note={`${note + (octave + 4)}`} onMouseDown={ e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div>
               { (hasSharp) ?
                 <div key={note} className='blackNote' data-note={`${note + '#' + (octave + 4)}`} onMouseDown={e => noteDown(e,e.target.getAttribute("data-note"))} onMouseUp={e => noteUp(e)}></div> : null
               }
@@ -88,5 +89,11 @@ function Keyboard() {
   );
 }
 
-export default Keyboard;
+const mapStateToProps = (props) => {
+  return {
+    currentSound: props.currentSound
+  }
+}
+
+export default connect(mapStateToProps)(Keyboard);
 

@@ -11,16 +11,17 @@ body {
   margin: auto;
 }
 
-#container {
+.container {
   margin: auto;
   position: relative;
   height: 200px;
   display: block;
   float: left;
   border: 5px solid black;
+  min-width: 700px;
 }
 
-#innerContainer {
+.innerContainer {
   position: relative;
   height:100%;
   width: 50px;

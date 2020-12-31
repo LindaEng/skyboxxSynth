@@ -9,7 +9,6 @@ import './sound.css';
 
 function App(props) {
   //hooks to hold sound
-  console.log(props)
   return (
     <div className="App">
       <div className="instrument">

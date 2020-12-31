@@ -1,11 +1,12 @@
 import React from 'react';
-import * as Tone from 'tone';
 import { connect } from 'react-redux';
-import changeSound from '../../reducers/rootReducer'
+import { changeSound } from '../../reducers/rootReducer'
 
 function SoundDropDown (props) {
   const handleChange = (event) => {
-    console.log(event.target.value,'HANDLE CHANGE')
+    const sound = event.target.value
+    props.changeSound(sound)
+    event.target.blur()
   }
   return (
     <div className="dropdown">
@@ -20,11 +21,6 @@ function SoundDropDown (props) {
   )
 }
 
-const mapStateToProps = (props) => {
-  return {
-    currentSound: props.currentSound
-  }
-}
 
 const mapToDispatch = (dispatch) => {
   return {
@@ -32,4 +28,4 @@ const mapToDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapToDispatch)(SoundDropDown);
+export default connect(null,mapToDispatch)(SoundDropDown);
