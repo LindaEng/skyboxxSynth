@@ -66,7 +66,7 @@ body {
 }
 
 .blackNote.active {
-  background: pink;
+  background: rgb(255, 43, 78);
 }
 
 .blackNoteColor {

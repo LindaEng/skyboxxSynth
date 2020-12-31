@@ -10,17 +10,18 @@ function SoundDropDown (props) {
     event.target.blur()
   }
   return (
-   <div className="dropdownPanel">
-      <div className="dropdown">
-        <select
-          onChange={handleChange}
-          className="sounds">
-          <option value="PolySynth">Poly</option>
-          <option value="AMSynth">AMSynth</option>
-          <option value="FMSynth">FMSynth</option>
-          <option value="MembraneSynth">Membrane</option>
-        </select>
-      </div>
+
+    <div className="dropdownPanel">
+        <div className="dropdown">
+          <select
+            onChange={handleChange}
+            className="sounds">
+            <option value="PolySynth">Poly</option>
+            <option value="AMSynth">AMSynth</option>
+            <option value="FMSynth">FMSynth</option>
+            <option value="MembraneSynth">Membrane</option>
+          </select>
+        </div>
     </div>
   )
 }

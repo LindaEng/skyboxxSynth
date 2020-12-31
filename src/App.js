@@ -5,8 +5,6 @@ import Keyboard from './Components/Keyboard/Keyboard';
 import SoundDropDown from './Components/Sound/SoundDropDown';
 import KeyboardLines from './Components/Keyboard/KeyboardLines';
 
-import './sound.css';
-
 
 function App(props) {
   //hooks to hold sound
