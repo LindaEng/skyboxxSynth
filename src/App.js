@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Keyboard from './Components/Keyboard/Keyboard';
 import SoundDropDown from './Components/Sound/SoundDropDown';
 import KeyboardLines from './Components/Keyboard/KeyboardLines';
+import ADSRSliders from './Components/ADSR/ADSRSliders'
 
 
 function App(props) {
@@ -13,7 +14,10 @@ function App(props) {
       <div className="synthBackground">
         <KeyboardLines/>
         <div className="keyboardPanelContainer">
-          <SoundDropDown/>
+          <div className="topPanel">
+            <SoundDropDown/>
+            <ADSRSliders/>
+          </div>
           <Keyboard/>
         </div>
       </div>

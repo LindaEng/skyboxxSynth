@@ -2,13 +2,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeSound } from '../../reducers/rootReducer';
 import './DropdownPanel.css';
+import * as Tone from 'tone';
+
 
 function SoundDropDown (props) {
+  //synth
+  const getCurrentSound = (synth) => {
+    switch(synth) {
+      case 'PolySynth':
+        return new Tone.PolySynth().toDestination()
+      case 'AMSynth':
+        return new Tone.AMSynth().toDestination()
+      case 'FMSynth':
+        return new Tone.FMSynth().toDestination()
+      case 'MembraneSynth':
+        return new Tone.MembraneSynth().toDestination()
+      default:
+        return new Tone.PolySynth().toDestination()
+    }
+  }
+
   const handleChange = (event) => {
-    const sound = event.target.value
+    const sound = getCurrentSound(event.target.value)
     props.changeSound(sound)
     event.target.blur()
   }
+
   return (
 
     <div className="dropdownPanel">

@@ -27,6 +27,11 @@ body {
   justify-content: space-between;
 }
 
+.topPanel {
+  display: flex;
+}
+
+
 .noteContainer {
   position: relative;
   height: 100%;
