@@ -1,7 +1,7 @@
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
-  height:20%;
+  height:50%;
   background: transparent; /* Otherwise white in Chrome */
 }
 input[type=range]::-webkit-slider-thumb {
@@ -109,8 +109,20 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .ADSRSliders {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   height: 100px;
   margin-left: 20px;
 }
 
+.sliderContainer {
+  display: flex;
+  height: 25%;
+}
+
+.sliderType {
+  width: 30%;
+  font-family: monospace;
+  color: #3c5b7e;
+}

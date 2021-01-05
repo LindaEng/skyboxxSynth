@@ -37,6 +37,8 @@ function ADSRSliders (props) {
     <div className="ADSRSliders">
       {envelopes.map((envelope,idx) => {
         return(
+          <div className="sliderContainer">
+          <div className="sliderType">{envelope}</div>
           <input
             key={envelope}
             data-type={envelope}
@@ -46,6 +48,7 @@ function ADSRSliders (props) {
             value={adsr.envelope}
             onChange={sliderFunc}
             step="0.005"/>
+           </div>
         )
       })}
     </div>
