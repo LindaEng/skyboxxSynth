@@ -6,6 +6,9 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'build')))
 
+// static file-serving middleware
+app.use(express.static(path.join(__dirname, '../', 'public')))
+
 app.use('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 })
@@ -14,9 +17,6 @@ app.use('/', (req, res, next) => {
 app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname, '..', 'public/index.html'));
 });
-
-// static file-serving middleware
-app.use(express.static(path.join(__dirname, '../', 'public')))
 
 // error handling endware
 app.use((err, req, res, next) => {

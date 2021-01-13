@@ -20,6 +20,7 @@ function ADSRSliders (props) {
         synth.options.envelope[envelopeType] = value
     } else {
         synth.envelope[envelopeType] = value
+        console.log('SYNTH ENVELOPE VALUES====',synth.envelope)
     }
   }
 
@@ -37,8 +38,8 @@ function ADSRSliders (props) {
     <div className="ADSRSliders">
       {envelopes.map((envelope,idx) => {
         return(
-          <div className="sliderContainer">
-          <div className="sliderType">{envelope}</div>
+          <div key={idx} className="sliderContainer">
+          <div key={idx} className="sliderType">{envelope}</div>
           <input
             key={envelope}
             data-type={envelope}

@@ -1,35 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-import Keyboard from './Components/Keyboard/Keyboard';
-import SoundDropDown from './Components/Sound/SoundDropDown';
-import KeyboardLines from './Components/Keyboard/KeyboardLines';
-import ADSRSliders from './Components/ADSR/ADSRSliders'
+import MainSynth from './Components/MainSynth/MainSynth.js';
+import DrumPad from './Components/DrumKit/DrumPad.js';
 
 
 function App(props) {
   //hooks to hold sound
   return (
-    <div className="App">
-      <div className="synthBackground">
-        <KeyboardLines/>
-        <div className="keyboardPanelContainer">
-          <div className="topPanel">
-            <SoundDropDown/>
-            <ADSRSliders/>
-          </div>
-          <Keyboard/>
-        </div>
-      </div>
+    <div>
+      <Switch>
+        <Route path='/' component={MainSynth} />
+        <Route path='/drumpad' component={DrumPad} />
+      </Switch>
     </div>
   )
 }
 
-const mapStateToProps = (props) => {
-  return {
-    currentSound: props.currentSound
-  }
-}
 
-export default connect(mapStateToProps)(App);
+
+export default App;
 

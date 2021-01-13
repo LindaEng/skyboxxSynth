@@ -1,11 +1,13 @@
+/* COMMENT SOURCE OF CODE */
 input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   height:50%;
   background: transparent; /* Otherwise white in Chrome */
 }
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
+
+input[type=range]::-webkit-slider-thumb::after {
+  content: 'HEY';
 }
 
 input[type=range]:focus {
