@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
 import MainSynth from './Components/MainSynth/MainSynth.js';
 import DrumPad from './Components/DrumKit/DrumPad.js';
@@ -8,12 +8,14 @@ import DrumPad from './Components/DrumKit/DrumPad.js';
 function App(props) {
   //hooks to hold sound
   return (
+  <Router>
     <div>
       <Switch>
-        <Route path='/' component={MainSynth} />
+        <Route exact path='/' component={MainSynth} />
         <Route path='/drumpad' component={DrumPad} />
       </Switch>
     </div>
+  </Router>
   )
 }
 

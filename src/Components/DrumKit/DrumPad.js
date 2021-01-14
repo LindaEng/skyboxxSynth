@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-function DrumPad() {
+function DrumPad(props) {
   return(
     <div>
-
+      <h1>WOWOWOWOWO</h1>
     </div>
   )
 }
