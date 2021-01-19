@@ -18,7 +18,7 @@ Each synth has the capability to adjust its Attack, Delay, Sustain, and Release.
 ---
 ## Demo
 
-![](https://github.com/LindaEng/Skyboxx/blob/master/skyboxSynth.gif)
+![](master/skyboxSynth.gif)
 
 ---
 ## Technologies
