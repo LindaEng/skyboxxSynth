@@ -28,7 +28,7 @@ app.use((err, req, res, next) => {
 
 
 app.listen(process.env.PORT || 8080, ()=>{
-  console.log('poop listening in port 8080')
+  console.log('listening in port 8080')
 });
 
 module.exports = app
