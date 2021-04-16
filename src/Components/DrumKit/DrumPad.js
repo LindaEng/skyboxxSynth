@@ -4,7 +4,7 @@ import React from 'react';
 function DrumPad(props) {
   return(
     <div>
-      <h1>WOWOWOWOWO</h1>
+      <h1>DRUM KIT COMING SOON...</h1>
     </div>
   )
 }
